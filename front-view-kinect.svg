@@ -16,7 +16,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r"
-   sodipodi:docname="front-view-kinect.svg">
+   sodipodi:docname="front-view-kinect.svg"
+   inkscape:export-filename="/home/david/Documents/robotics/hcr-2016/front-view-kinect.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <marker
@@ -97,7 +100,7 @@
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
      inkscape:cx="362.2907"
@@ -126,7 +129,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     style="display:none">
+     style="display:inline">
     <image
        y="189.2092"
        x="177.81659"
@@ -890,11 +893,13 @@ UBzHuZU/YXd7cBzHsCwLlmXt++CIiIiIaP9Idutm2wCYfTLTNGEYRtuFiIiIiO48Wa6XJAmUUrvq
   <g
      inkscape:groupmode="layer"
      id="layer2"
-     inkscape:label="Layer 2">
+     inkscape:label="Layer 2"
+     style="display:inline">
     <path
        style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.92758995;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="M 211.58984 210.36328 C 203.47529 210.36328 196.94336 216.89716 196.94336 225.01172 L 196.94336 244.27734 C 196.94336 252.3919 203.47529 258.92383 211.58984 258.92383 L 549.05469 258.92383 C 557.16924 258.92383 563.70117 252.3919 563.70117 244.27734 L 563.70117 225.01172 C 563.70117 216.89716 557.16924 210.36328 549.05469 210.36328 L 211.58984 210.36328 z M 297.23828 222.77539 A 12.879445 12.879445 0 0 1 310.11719 235.6543 A 12.879445 12.879445 0 0 1 297.23828 248.5332 A 12.879445 12.879445 0 0 1 284.35742 235.6543 A 12.879445 12.879445 0 0 1 297.23828 222.77539 z M 363.15039 222.77539 A 12.879445 12.879445 0 0 1 376.0293 235.6543 A 12.879445 12.879445 0 0 1 363.15039 248.5332 A 12.879445 12.879445 0 0 1 350.26953 235.6543 A 12.879445 12.879445 0 0 1 363.15039 222.77539 z M 395.47461 222.77539 A 12.879445 12.879445 0 0 1 408.35352 235.6543 A 12.879445 12.879445 0 0 1 395.47461 248.5332 A 12.879445 12.879445 0 0 1 382.5957 235.6543 A 12.879445 12.879445 0 0 1 395.47461 222.77539 z M 330.06641 232.48828 A 2.9123206 2.9123206 0 0 1 332.98047 235.40039 A 2.9123206 2.9123206 0 0 1 330.06641 238.31445 A 2.9123206 2.9123206 0 0 1 327.1543 235.40039 A 2.9123206 2.9123206 0 0 1 330.06641 232.48828 z "
-       id="rect4150" />
+       d="m 211.58984,210.36328 c -8.11455,0 -14.64648,6.53388 -14.64648,14.64844 l 0,19.26562 c 0,8.11456 6.53193,14.64649 14.64648,14.64649 l 337.46485,0 c 8.11455,0 14.64648,-6.53193 14.64648,-14.64649 l 0,-19.26562 c 0,-8.11456 -6.53193,-14.64844 -14.64648,-14.64844 l -337.46485,0 z m 85.64844,12.41211 a 12.879445,12.879445 0 0 1 12.87891,12.87891 12.879445,12.879445 0 0 1 -12.87891,12.8789 12.879445,12.879445 0 0 1 -12.88086,-12.8789 12.879445,12.879445 0 0 1 12.88086,-12.87891 z m 65.91211,0 a 12.879445,12.879445 0 0 1 12.87891,12.87891 12.879445,12.879445 0 0 1 -12.87891,12.8789 12.879445,12.879445 0 0 1 -12.88086,-12.8789 12.879445,12.879445 0 0 1 12.88086,-12.87891 z m 32.32422,0 a 12.879445,12.879445 0 0 1 12.87891,12.87891 12.879445,12.879445 0 0 1 -12.87891,12.8789 12.879445,12.879445 0 0 1 -12.87891,-12.8789 12.879445,12.879445 0 0 1 12.87891,-12.87891 z m -65.4082,9.71289 a 2.9123206,2.9123206 0 0 1 2.91406,2.91211 2.9123206,2.9123206 0 0 1 -2.91406,2.91406 2.9123206,2.9123206 0 0 1 -2.91211,-2.91406 2.9123206,2.9123206 0 0 1 2.91211,-2.91211 z"
+       id="rect4150"
+       inkscape:connector-curvature="0" />
     <rect
        style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.94742072;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4183"
@@ -904,7 +909,7 @@ UBzHuZU/YXd7cBzHsCwLlmXt++CIiIiIaP9Idutm2wCYfTLTNGEYRtuFiIiIiO48Wa6XJAmUUrvq
        y="259.01163"
        ry="0" />
     <path
-       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 395.47472,263.6856 39.90103,16.92006 -6.69226,18.56155 -46.59329,0.12627 -1.54725,0 -1.54726,0 -46.59329,-0.12627 -6.69226,-18.56155 39.90103,-16.92006 14.5214,0 z"
        id="path4186"
        inkscape:connector-curvature="0"
@@ -925,17 +930,17 @@ UBzHuZU/YXd7cBzHsCwLlmXt++CIiIiIaP9Idutm2wCYfTLTNGEYRtuFiIiIiO48Wa6XJAmUUrvq
          height="98.208946"
          width="136.08969"
          id="rect4147-3"
-         style="display:inline;opacity:1;fill:#000000;fill-opacity:0.87068954;stroke:#000000;stroke-width:0.77583927;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="display:inline;opacity:1;fill:#000000;fill-opacity:0.87068936;stroke:#000000;stroke-width:0.77583927;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
     <rect
-       style="opacity:1;fill:#000000;fill-opacity:0.47988507;stroke:#000000;stroke-width:0.97249264;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:#000000;fill-opacity:0.47988509;stroke:#000000;stroke-width:0.97249264;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4223"
        width="197.00726"
        height="11.940128"
        x="282.03931"
        y="299.61078" />
     <rect
-       style="opacity:1;fill:#000000;fill-opacity:0.68678159;stroke:#000000;stroke-width:0.975407;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:#000000;fill-opacity:0.68678158;stroke:#000000;stroke-width:0.975407;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4225"
        width="10.917451"
        height="26.274593"
@@ -991,16 +996,16 @@ UBzHuZU/YXd7cBzHsCwLlmXt++CIiIiIaP9Idutm2wCYfTLTNGEYRtuFiIiIiO48Wa6XJAmUUrvq
     <flowRoot
        xml:space="preserve"
        id="flowRoot4265"
-       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;-inkscape-font-specification:'sans-serif, Normal';font-stretch:normal;font-variant:normal;text-anchor:end;text-align:end;writing-mode:lr;"><flowRegion
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"><flowRegion
          id="flowRegion4267"><rect
            id="rect4269"
            width="130.71428"
            height="61.428562"
            x="182.85715"
            y="325.21936"
-           style="-inkscape-font-specification:'sans-serif, Normal';font-family:sans-serif;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:22.5px;text-anchor:end;text-align:end;writing-mode:lr;line-height:125%;" /></flowRegion><flowPara
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:end;writing-mode:lr-tb;text-anchor:end" /></flowRegion><flowPara
          id="flowPara4271"
-         style="-inkscape-font-specification:'sans-serif, Normal';font-family:sans-serif;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:22.5px;text-anchor:end;text-align:end;writing-mode:lr;line-height:125%;">3D printed mount</flowPara></flowRoot>    <path
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:end;writing-mode:lr-tb;text-anchor:end">3D printed mount</flowPara></flowRoot>    <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow2Lend)"
        d="m 227.14286,325.21934 c 14.25802,-17.15363 30.71429,-20 48.57143,-20"
        id="path4275"
