@@ -117,6 +117,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/human/catkin_ws/build/gtest/cmake_install.cmake")
+  include("/home/human/catkin_ws/build/fsm/cmake_install.cmake")
   include("/home/human/catkin_ws/build/openni_launch/cmake_install.cmake")
   include("/home/human/catkin_ws/build/speech/cmake_install.cmake")
   include("/home/human/catkin_ws/build/openni_camera/cmake_install.cmake")

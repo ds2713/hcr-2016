@@ -4,6 +4,10 @@
 /home/human/catkin_ws/install/setup.sh
 /home/human/catkin_ws/install/setup.zsh
 /home/human/catkin_ws/install/.rosinstall
+/home/human/catkin_ws/install/lib/pkgconfig/fsm.pc
+/home/human/catkin_ws/install/share/fsm/cmake/fsmConfig.cmake
+/home/human/catkin_ws/install/share/fsm/cmake/fsmConfig-version.cmake
+/home/human/catkin_ws/install/share/fsm/package.xml
 /home/human/catkin_ws/install/lib/pkgconfig/openni_launch.pc
 /home/human/catkin_ws/install/share/openni_launch/cmake/openni_launchConfig.cmake
 /home/human/catkin_ws/install/share/openni_launch/cmake/openni_launchConfig-version.cmake
