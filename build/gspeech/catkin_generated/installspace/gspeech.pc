@@ -1,0 +1,8 @@
+prefix=/home/human/catkin_ws/install
+
+Name: gspeech
+Description: Description of gspeech
+Version: 0.2.0
+Cflags: 
+Libs: -L/home/human/catkin_ws/install/lib 
+Requires: rospy

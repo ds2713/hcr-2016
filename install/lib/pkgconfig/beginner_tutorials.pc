@@ -1,0 +1,8 @@
+prefix=/home/human/catkin_ws/install
+
+Name: beginner_tutorials
+Description: Description of beginner_tutorials
+Version: 0.0.0
+Cflags: -I/home/human/catkin_ws/install/include
+Libs: -L/home/human/catkin_ws/install/lib 
+Requires: roscpp rospy std_msgs message_runtime
