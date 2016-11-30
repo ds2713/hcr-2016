@@ -1,0 +1,8 @@
+prefix=/home/human/catkin_ws/devel
+
+Name: fsm
+Description: Description of fsm
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/human/catkin_ws/devel/lib 
+Requires: 
