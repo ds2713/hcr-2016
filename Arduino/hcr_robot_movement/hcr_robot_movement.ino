@@ -99,14 +99,14 @@ void setup() {
 
 void loop() {
   while(Serial.available()==0){
-    
+
     if (canidle){
     idle();}
-    
+
     }
   temp=Serial.parseFloat(); //read the prefix part, ignoring the comma
   temp2=Serial.parseFloat(); //read the angle part after the comma
-  
+
   switch(round(temp)){
     case PREFIXHEAD :
       //movehead(abs(temp2),getdir(temp2));
@@ -158,7 +158,7 @@ void loop() {
         case 4:
           playtone(R2D2);
         break;
-      }  
+      }
     break;
   }
 }
@@ -188,7 +188,7 @@ void setmstephead(int newmstep){
 
 msteprot=newmstep;
 
-  
+
   switch(newmstep){
     case 1:
     digitalWrite(PIN_A0,LOW);
@@ -340,7 +340,7 @@ void shake_hands(){
   moveclawto(20);
   moveheadto(0);
   delay(800);
-  moveclawto(10);  
+  moveclawto(10);
   movelift(25,0);
   movelift(25,1);
   movelift(25,0);
@@ -450,5 +450,3 @@ void calibrate_arm(){
   calibrate_lift();
   calibrate_claw();
 }
-
-

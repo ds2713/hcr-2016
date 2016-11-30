@@ -8,7 +8,8 @@
       <rosparam name="openni_tracker/camera_frame_id" value="camera_link" />
     </node>
 
-    <node pkg="speech" name="speechy" type="speechy.py" respawn="true"/>
+    <!-- <node pkg="speech" name="speechy" type="speechy.py" respawn="true"/>
+    <node pkg="arduino_controls" name="arduino" type="arduino.py" respawn="true"/> -->
 
     <include file="$(find openni_launch)/launch/openni.launch"/>
 
