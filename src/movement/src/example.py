@@ -1,48 +1,51 @@
 #!/usr/bin/env python
-import roslib; roslib.load_manifest('head_listener')
+import roslib
 import rospy
-import tf
-import math
-from std_msgs.msg import String
-from head_pose.msg import head_data
 from geometry_msgs.msg import Twist
-from tf.transformations import *
+from std_msgs.msg import Float32
 
-def converter(pub,data):
-    move = Twist()
-    if (data.pitch > 0.15) and (data.pitch < 1.0): #looking down
-        move.linear.x = 0.5
-    elif (data.pitch < -0.4) and (data.pitch > -1.0): #looking up
-        move.linear.x = -0.5
-    elif (data.yaw > 0.4) and (data.yaw < 1.0): #looking left
-        move.angular.z = 0.5
-    elif (data.yaw < -0.4) and (data.yaw > -1.0): #looking right
-        move.angular.z = -0.5
-    else:
-        move.linear.x = 0.0
-        move.angular.z = 0.0
-    print(move)
-    pub.publish(move)
-
+ur_dis = 1.5
+limit = 0.1 # + or - 10cm from the ur_dis
+speed = 1 #speed of motors
+max_dis = 4
 
 def callback(data):
-    pub = rospy.Publisher('cmd_vel',Twist)
-    converter(pub,data)
-    head_tf = tf.TransformBroadcaster()
-    # quaternion = quaternion_from_euler(data.roll,data.pitch,data.yaw)
-    #(data.x_center/1000.0,data.y_center/1000.0,data.z_center/1000.0)
-    head_tf.sendTransform((data.x_center/1000.0,-data.y_center/1000.0,data.z_center/1000.0),
-        quaternion_from_euler(0,data.pitch,math.pi+data.yaw), #roll,pitch,yaw
-        rospy.Time.now(),
-        "head_pose",
-        "xtion")
-    #rospy.loginfo("Time to move!")
-    #print(data)
+    #print str(data)
+
+    velocity_publisher = rospy.Publisher('/RosAria/cmd_vel',Twist, queue_size=10)
+
+    vel_msg = Twist()
+
+    #Set the speed of the other parameters to 0
+    #vel_msg.linear.x = 0
+    vel_msg.linear.y = 0
+    vel_msg.linear.z = 0
+    vel_msg.angular.x = 0
+    vel_msg.angular.y = 0
+    vel_msg.angular.z = 0
+
+    #while not rospy.is_shutdown():
+    if data.data < max_dis:
+    	if data.data > ur_dis + limit:
+    		#move towards user
+    		vel_msg.linear.x = speed
+    	elif data.data < ur_dis - limit:
+    		#move away from user
+    		vel_msg.linear.x = -speed
+    	else:
+    		#stop, in good distance from user
+    		vel_msg.linear.x = 0
+    else:
+    	#outside of expected range
+    	vel_msg.linear.x = 0
+
+    print str(data.data)
+    velocity_publisher.publish(vel_msg)
 
 
 def listener():
     rospy.init_node('listener', anonymous=True)
-    rospy.Subscriber("Head_Pose_Data", head_data, callback)
+    rospy.Subscriber("/dis_topic", Float32, callback)
     rospy.spin()
 
 
