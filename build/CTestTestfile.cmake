@@ -7,6 +7,7 @@
 subdirs(gtest)
 subdirs(arduino_controls)
 subdirs(fsm)
+subdirs(imgproc)
 subdirs(movement)
 subdirs(openni_launch)
 subdirs(speech)
