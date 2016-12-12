@@ -9,7 +9,8 @@ import sensor_msgs.point_cloud2 as pointcloud
 
 import struct
 
-dis_range = 2
+dis_range = 1
+dis_limit = 0.5
 
 noise_lim = 5000
 
@@ -37,7 +38,7 @@ def callback(data):
         # Deal with later, for RGB, need to convert from String.
         # str_rgb = struct.pack('f', p[3]).encode('hex')
 
-        if p[2] <= dis_range:
+        if p[2] <= dis_range + dis_limit:
         #if p[2] <= dis_range + dis_limit and p[2] >= dis_range - dis_limit:
             xsum = xsum + p[0]
             ysum = ysum + p[1]
