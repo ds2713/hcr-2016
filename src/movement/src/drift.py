@@ -13,6 +13,7 @@ speed_back = 0.3
 rot_limit = 0.1
 rot_speed = 0.3
 max_dis = 2
+turn_bool = True
 
 vel_msg = Twist()
 
@@ -47,33 +48,39 @@ def callback(data):
                 #move towards user
                 print "Foward"
                 vel_msg.linear.x = speed
+		turn_bool = True
                 #print ("Forward")
             elif data.z < ur_dis - u_limit:
                 #move away from user
                 print "Backward"
                 vel_msg.linear.x = -speed_back
+		turn_bool = True
                 #print "Backward"
             else:
                 #stop, in good distance from user
                 print "Stop"
                 vel_msg.linear.x = 0
-                #print "Stop"
+                turn_bool = False
+		#print "Stop"
 
-            if data.x < rot_limit:
-                #move towards user
-                print "Right"
-                vel_msg.angular.z = rot_speed
-                #print ("Forward")
-            elif data.x > rot_limit:
-                #move away from user
-                print "Left"
-                vel_msg.angular.z = -rot_speed
-                #print "Backward"
-            else:
-                #stop, in good distance from user
-                print "Straight" 
-                vel_msg.angular.z = 0
-                #print "Stop"
+            if turn_bool:
+		if data.x < rot_limit:
+                	#move towards user
+                	print "Right"
+                	vel_msg.angular.z = rot_speed
+                	#print ("Forward")
+            	elif data.x > -rot_limit:
+                	#move away from user
+                	print "Left"
+                	vel_msg.angular.z = -rot_speed
+                	#print "Backward"
+            	else:
+                	#stop, in good distance from user
+                	print "Straight" 
+                	vel_msg.angular.z = 0
+                	#print "Stop"
+	    else:
+			vel_msg.angular.z = 0
         else:
             #outside of expected range
             print "Stop blind"
