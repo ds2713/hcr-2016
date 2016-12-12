@@ -10,7 +10,6 @@ def the_routines():
     rospy.Subscriber("arduino_routines", Int16, callback)
     rospy.spin()
 
-
 # 0 is no
 # 1 is yes
 # 2 is calibrate
@@ -20,73 +19,51 @@ def the_routines():
 # 6 is tone
 
 def callback(data):
-    PREFIXCALIBRATE = 123
-    PREFIXSHAKEHANDS = 111
-    PREFIXCHANGEIDLE = 420
-    PREFIXYES = 777
-    PREFIXNO = 888
-    PREFIXPLAY = 999
-    PREFIXTONE = 990
+    PREFIXCALIBRATE = '123'
+    PREFIXSHAKEHANDS = '111'
+    PREFIXCHANGEIDLE = '420'
+    PREFIXYES = '777'
+    PREFIXNO = '888'
+    PREFIXPLAY = '999'
+    PREFIXTONE = '990'
 
     global ser
     case = data.data
 
-    if input_angle != current_head:
-        ser.write('{}{}{}'.format(PREFIXHEAD,',',str(input_angle)))
-        ser.read(4)
-        current_head = input_angle
-        pub.publish(current_head)
-    else:
-        pass
+    if case == 0:
+        ser.write('{}{}{}'.format(PREFIXNO,',',str(0)))
+        ser.read(1)
 
-def callback_clawdist(data):
-    global ser
-    global PREFIXCLAW
-    global current_claw
+    elif case == 1:
+        ser.write('{}{}{}'.format(PREFIXYES,',',str(0)))
+        ser.read(1)
 
-    pub = rospy.Publisher('clawdist_out', Float32, queue_size=10)
-    input_distance = data.data
-    if input_distance != current_claw:
-        ser.write('{}{}{}'.format(PREFIXCLAW,',',str(input_distance)))
-        ser.read(4)
-        current_claw = input_distance
-        pub.publish(current_claw)
-    else:
-        pass
+    elif case == 2:
+        ser.write('{}{}{}'.format(PREFIXCALIBRATE,',',str(0)))
+        ser.read(1)
 
-def callback_liftdist(data):
-    global ser
-    global PREFIXLIFT
-    global current_lift
+    elif case == 3:
+        ser.write('{}{}{}'.format(PREFIXSHAKEHANDS,',',str(0)))
+        ser.read(1)
 
-    pub = rospy.Publisher('liftdist_out', Float32, queue_size=10)
-    input_distance = data.data
-    if input_distance != current_lift:
-        ser.write('{}{}{}'.format(PREFIXLIFT,',',str(input_distance)))
-        ser.read(4)
-        current_lift = input_distance
-        pub.publish(current_lift)
-    else:
-        pass
+    elif case == 4:
+        ser.write('{}{}{}'.format(PREFIXCHANGEIDLE,',',str(0)))
+        ser.read(1)
 
-def callback_tiltangle(data):
-    global ser
-    global PREFIXTILT
-    global current_tilt
+    elif case == 5:
+        ser.write('{}{}{}'.format(PREFIXPLAY,',',str(0)))
+        ser.read(1)
 
-    pub = rospy.Publisher('tiltangle_out', Float32, queue_size=10)
-    input_angle = data.data
-    if input_angle != current_tilt:
-        ser.write('{}{}{}'.format(PREFIXTILT,',',str(input_angle)))
-        ser.read(4)
-        current_tilt = input_angle
-        pub.publish(current_tilt)
+    elif case == 6:
+        ser.write('{}{}{}'.format(PREFIXTONE,',',str(0)))
+        ser.read(1)
+
     else:
         pass
 
 if __name__ == '__main__':
     global ser
-    ser = serial.Serial('/dev/ttyACM0')
+    ser = serial.Serial('/dev/ttyACM0', timeout=10.0)
 
     try:
         the_routines()
