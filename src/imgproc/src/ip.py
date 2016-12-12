@@ -10,7 +10,7 @@ import sensor_msgs.point_cloud2 as pointcloud
 import struct
 
 dis_range = 1
-dis_limit = 0.9
+dis_limit = 0.5
 
 noise_lim = 5000
 

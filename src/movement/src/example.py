@@ -52,6 +52,8 @@ def callback(data):
         		#stop, in good distance from user
         		vel_msg.linear.x = 0
                 #print "Stop"
+
+
         else:
         	#outside of expected range
         	vel_msg.linear.x = 0
