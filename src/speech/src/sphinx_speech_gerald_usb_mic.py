@@ -62,20 +62,21 @@ def speechtotext():
                     print("listening")
                     the_output = r.recognize_sphinx(audio, keyword_entries=keywords)
                 except sr.UnknownValueError:
-                    the_output = "Sorry, I couldn't understand you"
+                    the_output = "UNKNOWN"
                     rospy.loginfo("Sphinx could not understand audio")
                 except sr.RequestError as e:
-                    the_output = "Sorry, I couldn't understand you"
+                    the_output = "REQUEST"
                     rospy.loginfo("Request error; {0}".format(e))
 
-                if keyword_go in the_output:
-                    keyword_publisher = keyword_go
-                    pub.publish(keyword_publisher)
-                elif keyword_stop in the_output:
-                    keyword_publisher = keyword_stop
-                    pub.publish(keyword_publisher)
+                # if keyword_go in the_output:
+                #     keyword_publisher = keyword_go
+                #     pub.publish(keyword_publisher)
+                # elif keyword_stop in the_output:
+                #     keyword_publisher = keyword_stop
+                #     pub.publish(keyword_publisher)
 
-                rospy.loginfo(the_output)
+                rospy.loginfo(the_output.upper())
+                pub.publish(the_output.upper())
 
             except sr.WaitTimeoutError:
                 times = times + 1

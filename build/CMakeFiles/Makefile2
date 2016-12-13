@@ -1219,6 +1219,24 @@ clean: openni_launch/CMakeFiles/_run_tests_openni_launch_roslaunch-check_launch_
 .PHONY : clean
 
 #=============================================================================
+# Directory level rules for directory sonaring
+
+# Convenience name for "all" pass in the directory.
+sonaring/all:
+
+.PHONY : sonaring/all
+
+# Convenience name for "clean" pass in the directory.
+sonaring/clean:
+
+.PHONY : sonaring/clean
+
+# Convenience name for "preinstall" pass in the directory.
+sonaring/preinstall:
+
+.PHONY : sonaring/preinstall
+
+#=============================================================================
 # Directory level rules for directory speech
 
 # Convenience name for "all" pass in the directory.

@@ -1,2 +1,2 @@
-arduino_controls:fsm:imgproc:movement:openni_camera:openni_launch:openni_tracker:rosaria:rosaria_client:shopper:speech
+arduino_controls:fsm:imgproc:movement:openni_camera:openni_launch:openni_tracker:rosaria:rosaria_client:shopper:sonaring:speech
 -DCATKIN_DEVEL_PREFIX=/home/human/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/human/catkin_ws/install -G Unix Makefiles

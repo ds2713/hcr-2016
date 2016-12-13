@@ -79,6 +79,13 @@
 /home/human/catkin_ws/build/openni_launch/CMakeFiles/clean_test_results_openni_launch.dir
 /home/human/catkin_ws/build/openni_launch/CMakeFiles/run_tests_openni_launch.dir
 /home/human/catkin_ws/build/openni_launch/CMakeFiles/_run_tests_openni_launch_roslaunch-check_launch_includes.dir
+/home/human/catkin_ws/build/sonaring/CMakeFiles/list_install_components.dir
+/home/human/catkin_ws/build/sonaring/CMakeFiles/install.dir
+/home/human/catkin_ws/build/sonaring/CMakeFiles/rebuild_cache.dir
+/home/human/catkin_ws/build/sonaring/CMakeFiles/install/strip.dir
+/home/human/catkin_ws/build/sonaring/CMakeFiles/install/local.dir
+/home/human/catkin_ws/build/sonaring/CMakeFiles/test.dir
+/home/human/catkin_ws/build/sonaring/CMakeFiles/edit_cache.dir
 /home/human/catkin_ws/build/speech/CMakeFiles/list_install_components.dir
 /home/human/catkin_ws/build/speech/CMakeFiles/install.dir
 /home/human/catkin_ws/build/speech/CMakeFiles/rebuild_cache.dir

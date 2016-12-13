@@ -552,6 +552,12 @@ shopper_SOURCE_DIR:STATIC=/home/human/catkin_ws/src/shopper
 smclib_DIR:PATH=/opt/ros/kinetic/share/smclib/cmake
 
 //Value Computed by CMake
+sonaring_BINARY_DIR:STATIC=/home/human/catkin_ws/build/sonaring
+
+//Value Computed by CMake
+sonaring_SOURCE_DIR:STATIC=/home/human/catkin_ws/src/sonaring
+
+//Value Computed by CMake
 speech_BINARY_DIR:STATIC=/home/human/catkin_ws/build/speech
 
 //Value Computed by CMake
@@ -712,7 +718,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=13
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=14
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

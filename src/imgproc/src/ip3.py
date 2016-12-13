@@ -13,7 +13,7 @@ import struct
 
 dis_range = 2
 noise_lim = 5000
-limit_rgb = 50
+limit_rgb = 25
 limit_blob = .25
 
 def main():
@@ -25,8 +25,10 @@ def main():
 def mode(data):
     global start
 
-    if "START" in data.data:
+    if "CALIBRATE" in data.data:
         start = True
+    else:
+        start = False
 
 def callback(data):
     global old_rgb
@@ -34,7 +36,7 @@ def callback(data):
     global start
 
     pub = rospy.Publisher('follow', Point32, queue_size=1)
-    rate = rospy.Rate(1)
+    rate = rospy.Rate(10)
 
     xsum = 0
     ysum = 0
@@ -65,9 +67,9 @@ def callback(data):
             ysum = ysum + p[1]
             zsum = zsum + p[2]
 
-            rsum = rsum + int(str_rgb[0:2])
-            gsum = gsum + int(str_rgb[2:4])
-            bsum = bsum + int(str_rgb[4:6])
+            rsum = rsum + int(str_rgb[0:2], 16)
+            gsum = gsum + int(str_rgb[2:4], 16)
+            bsum = bsum + int(str_rgb[4:6], 16)
 
             num = num + 1
 
@@ -75,21 +77,21 @@ def callback(data):
         new_blob = [xsum/num, ysum/num, zsum/num]
         new_rgb = [rsum/num, gsum/num, bsum/num]
 
-        diff_rgb = [new_rgb[0] - old_rgb[0], new_rgb[1] - old_rgb[1], new_rgb[2] - old_rgb[2])]
+        diff_rgb = [new_rgb[0] - old_rgb[0], new_rgb[1] - old_rgb[1], new_rgb[2] - old_rgb[2]]
         mag_diff_rgb = math.sqrt(diff_rgb[0] * diff_rgb[0] + diff_rgb[1] * diff_rgb[1] + diff_rgb[2] * diff_rgb[2])
         # diff_blob = [new_blob[0] - old_blob[0], new_blob[1] - old_blob[1], new_blob[2] - old_blob[2])]
         # mag_diff_blob = math.sqrt(diff_blob[0] * diff_blob[0] + diff_blob[1] * diff_blob[1] + diff_blob[2] * diff_blob[2])
 
         if start:
             pub.publish(Point32(new_blob[0], new_blob[1], new_blob[2]))
-            old_blob = new_blob
+            # old_blob = new_blob
             old_rgb = new_rgb
             start = False
 
         # elif mag_diff_blob < limit_blob and mag_diff_rgb < limit_rgb:
         elif mag_diff_rgb < limit_rgb:
             pub.publish(Point32(new_blob[0], new_blob[1], new_blob[2]))
-            old_blob = new_blob
+            # old_blob = new_blob
             old_rgb = new_rgb
 
         else:
