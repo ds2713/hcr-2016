@@ -20,7 +20,7 @@ def main():
 
 def callback(data):
     pub = rospy.Publisher('follow', Point32, queue_size=1)
-    rate = rospy.Rate(10)
+    rate = rospy.Rate(1)
 
 
     xsum = 0

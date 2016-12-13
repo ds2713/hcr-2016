@@ -11,8 +11,10 @@ index = pyaudio.PyAudio().get_device_count() - 1
 print index
 print int(index)
 
-keyword_stop = "stay"
+keyword_stop = "finish"
 keyword_go = "follow"
+
+keywords = [("finish", 0.8), ("follow", 0.8), ("calibrate", 0.8)]
 
 #Device name for Kinect audio device
 search_word = "Kinect USB Audio"
@@ -38,6 +40,13 @@ def speechtotext():
 
     r = sr.Recognizer()
 
+    r.dynamic_energy_threshold = True
+    r.energy_threshold = 500  # minimum audio energy to consider for recording
+    r.pause_threshold = 0.2  # seconds of non-speaking audio before a phrase is considered complete
+    r.phrase_threshold = 0.3  # minimum seconds of speaking audio before we consider the speaking audio a phrase - values below this are ignored (for filtering out clicks and pops)
+    r.non_speaking_duration = 0.1  # seconds of non-speaking audio to keep on both sides of the recording
+
+
     times = 1
     while not rospy.is_shutdown():
 
@@ -45,19 +54,19 @@ def speechtotext():
         with sr.Microphone(int(usb_microphone)) as source:
 
             print("Say something!")
-            audio = r.listen(source)
+            audio = r.listen(source, phrase_time_limit = 3)
 
             try:
 
                 try:
                     print("listening")
-                    the_output = r.recognize_google(audio)
+                    the_output = r.recognize_sphinx(audio, keyword_entries=keywords)
                 except sr.UnknownValueError:
                     the_output = "Sorry, I couldn't understand you"
-                    rospy.loginfo("Google Speech Recognition could not understand audio")
+                    rospy.loginfo("Sphinx could not understand audio")
                 except sr.RequestError as e:
                     the_output = "Sorry, I couldn't understand you"
-                    rospy.loginfo("Could not request results from Google Speech Recognition service; {0}".format(e))
+                    rospy.loginfo("Request error; {0}".format(e))
 
                 if keyword_go in the_output:
                     keyword_publisher = keyword_go
