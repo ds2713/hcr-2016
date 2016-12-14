@@ -12,7 +12,8 @@ u_limit = 0.2 # + or - 20cm from the ur_dis
 vis_limit = 0.9 #+ or - 20cm from view
 speed = 0.2 #speed of motors
 speed_back = 0.3
-rot_limit = 0.1
+rot = 0.1
+rot_limit = 0;
 rot_speed = 0.3
 max_dis = 2
 
@@ -46,17 +47,19 @@ def callback(data):
         dis = sqrt(data.z**2 + data.x**2)
         deviation = dis - ur_dis
 
-        angle = 90.0
+        angle = 30.0
         angle = radians(-angle)
 
 
         x_prime = data.x * cos(angle) - data.z * sin(angle)
         z_prime = data.x * sin(angle) + data.z * cos(angle)
 
-        ur_dis_prime = ur_dis * cos(angle) - rot_limit * sin(angle)
-        rot_limit_prime = ur_dis * sin(angle) - rot_limit * cos(angle)
+        ur_dis_prime = ur_dis * cos(angle) - rot * sin(angle)
+        rot_prime = ur_dis * sin(angle) + rot * cos(angle)
 
-        u_limit_prime = u_limit * cos(angle)
+        u_limit_prime = u_limit * cos(angle) - rot * sin(angle)
+        rot_limit_prime = u_limit * sin(angle) + rot * cos(angle)
+
         print "u_limit prime: " + str(u_limit_prime)
         #while not rospy.is_shutdown():
         if dis > 0:
@@ -64,13 +67,15 @@ def callback(data):
                 #move towards user
                 print "Forward"
                 #rospy.loginfo("Forward")
-                vel_msg.linear.x = speed * (data.z/ur_dis)
+                vel_msg.linear.x = speed
+                #vel_msg.angular.z = speed * sin(angle) + rot_speed * cos(angle)
                 #print ("Forward")
-            elif z_prime < ur_dis_prime - u_limit:
+            elif z_prime < ur_dis_prime - u_limit_prime:
                 #move away from user
                 print "Backward"
                 #rospy.loginfo("Backward")
-                vel_msg.linear.x = -speed_back
+                vel_msg.linear.x = -speed
+                #vel_msg.angular.z = -(speed * sin(angle) + rot_speed * cos(angle))
                 #print "Backward"
             else:
                 #stop, in good distance from user
@@ -79,13 +84,13 @@ def callback(data):
                 vel_msg.linear.x = 0
                 #print "Stop"
 
-            if x_prime > rot_limit_prime:
+            if x_prime > rot_prime + rot_limit_prime:
                 #move towards user
                 print "Right"
                 #rospy.loginfo("Right")
                 vel_msg.angular.z = -rot_speed
                 #print ("Forward")
-            elif x_prime < -rot_limit_prime:
+            elif x_prime < -rot_prime:
                 #move away from user
                 print "Left"
                 #rospy.loginfo("Left")
