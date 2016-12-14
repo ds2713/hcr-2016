@@ -15,8 +15,6 @@ max_dis = 2
 keyword_stop = "stop"
 keyword_go = "follow"
 
-follow = False
-
 vel_msg = Twist()
 
 #Set the speed of the other parameters to 0
@@ -40,6 +38,7 @@ signal.signal(signal.SIGINT, sigint_handler)
 
 def callback(data):
     #print str(data)
+    global follow
     print follow
     try:
 
