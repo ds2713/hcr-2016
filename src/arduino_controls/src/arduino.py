@@ -75,7 +75,7 @@ def callback_tiltangle(data):
 
 if __name__ == '__main__':
     global ser
-    ser = serial.Serial('/dev/ttyACM0', timeout=10.0)
+    ser = serial.Serial('/dev/ttyACM0', timeout=14.0)
 
     global PREFIXHEAD
     PREFIXHEAD = '666'
