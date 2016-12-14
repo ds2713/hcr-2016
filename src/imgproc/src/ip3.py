@@ -13,7 +13,7 @@ import struct
 
 dis_range = 2
 noise_lim = 5000
-limit_rgb = 25
+limit_rgb = 15
 limit_blob = .25
 
 def main():

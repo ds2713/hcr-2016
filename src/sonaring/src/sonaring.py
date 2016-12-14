@@ -3,6 +3,7 @@
 import rospy
 from sensor_msgs.msg import PointCloud2
 from geometry_msgs.msg import Point32
+import math
 
 import sensor_msgs.point_cloud2 as pointcloud
 
@@ -53,7 +54,7 @@ def avoid(data):
         minimum = [0, 0, dist_limit + 1]
 
         for each in collisions:
-            if each[2] < minimum[2]
+            if each[2] < minimum[2]:
                 minimum = each
 
         xcol = minimum[0]
@@ -61,7 +62,7 @@ def avoid(data):
 
         angle = math.atan2(ycol, xcol)
 
-        if angle => limit_right and angle <= middle:
+        if angle >= limit_right and angle <= middle:
             cos_angle = math.cos(angle)
             sin_angle = math.sin(angle)
 

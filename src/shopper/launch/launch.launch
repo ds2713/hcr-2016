@@ -4,12 +4,10 @@
     <param name="openni_tracker/camera_frame_id" value="camera_link" />
     <node pkg="rosaria" name="RosAria" type="RosAria" args="_port:=/dev/ttyUSB1"/>
 
-    <node pkg="openni_tracker" name="openni_tracker" type="openni_tracker" respawn="true">
-      <rosparam name="openni_tracker/camera_frame_id" value="camera_link" />
-    </node>
-
-    <!-- <node pkg="speech" name="speechy" type="speechy.py" respawn="true"/>
-    <node pkg="arduino_controls" name="arduino" type="arduino.py" respawn="true"/> -->
+    <node pkg="speech" name="speechy" type="sphinx_speech_gerald_usb_mic.py" respawn="true"/>
+    <node pkg="imgproc" name="movement" type="ip3.py" respawn="true"/>
+    <node pkg="movement" name="listener" type="drift_with_angle.py" respawn="true"/>
+    <!-- <node pkg="arduino_controls" name="arduino" type="arduino.py" respawn="true"/> -->
 
     <include file="$(find openni_launch)/launch/openni.launch"/>
 
