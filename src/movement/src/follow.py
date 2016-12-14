@@ -46,24 +46,46 @@ def callback(data):
         velocity_publisher = rospy.Publisher('/RosAria/cmd_vel',Twist, queue_size=10)
 
         if follow == True:
-            print("Should be following")
+            print "Should be following"
             #while not rospy.is_shutdown():
-            if data.z < ur_dis + limit2 and data.z > ur_dis - limit2:
-            	if data.z > ur_dis + limit:
-            		#move towards user
-            		vel_msg.linear.x = speed
+            if data.z < ur_dis + vis_limit and data.z > ur_dis - vis_limit:
+                if data.z > ur_dis + u_limit:
+                    #move towards user
+                    print "Foward"
+                    vel_msg.linear.x = speed
                     #print ("Forward")
-            	elif data.z < ur_dis - limit:
-            		#move away from user
-            		vel_msg.linear.x = -speed
+                elif data.z < ur_dis - u_limit:
+                    #move away from user
+                    print "Backward"
+                    vel_msg.linear.x = -speed_back
                     #print "Backward"
-            	else:
-            		#stop, in good distance from user
-            		vel_msg.linear.x = 0
+                else:
+                    #stop, in good distance from user
+                    print "Stop"
+                    vel_msg.linear.x = 0
+                    #print "Stop"
+
+                if data.x < rot_limit:
+                    #move towards user
+                    print "Right"
+                    vel_msg.angular.z = rot_speed
+                    #print ("Forward")
+                elif data.x > rot_limit:
+                    #move away from user
+                    print "Left"
+                    vel_msg.angular.z = -rot_speed
+                    #print "Backward"
+                else:
+                    #stop, in good distance from user
+                    print "Straight"
+                    vel_msg.angular.z = 0
                     #print "Stop"
             else:
-            	#outside of expected range
-            	vel_msg.linear.x = 0
+                #outside of expected range
+                print "Stop blind"
+                vel_msg.angular.z = 0
+                print "straight blind"
+                vel_msg.linear.x = 0
         else:
             print("Not meant to be following!")
             vel_msg.linear.x = 0
