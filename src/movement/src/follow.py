@@ -7,11 +7,13 @@ from std_msgs.msg import String
 import signal
 
 ur_dis = 1
-limit = 0.2 # + or - 10cm from the ur_dis
-limit2 = 0.9
-speed = 0.3 #speed of motors
+u_limit = 0.2 # + or - 20cm from the ur_dis
+vis_limit = 0.9 #+ or - 20cm from view
+speed = 0.5 #speed of motors
+speed_back = 0.3
+rot_limit = 0.1
+rot_speed = 0.3
 max_dis = 2
-vis_limit = 0.9
 
 keyword_stop = "FINISH"
 keyword_go = "FOLLOW"
