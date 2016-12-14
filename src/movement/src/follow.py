@@ -11,9 +11,10 @@ limit = 0.2 # + or - 10cm from the ur_dis
 limit2 = 0.9
 speed = 0.3 #speed of motors
 max_dis = 2
+vis_limit = 0.9
 
-keyword_stop = "stop"
-keyword_go = "follow"
+keyword_stop = "FINISH"
+keyword_go = "FOLLOW"
 
 vel_msg = Twist()
 
@@ -116,4 +117,6 @@ def listener():
 
 
 if __name__ == '__main__':
+    global follow
+    follow = False
     listener()

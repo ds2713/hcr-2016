@@ -19,10 +19,10 @@ limit_rgb = 50
 limit_blob = .25
 
 def main():
-        rospy.init_node('movement', anonymous=True)
-        rospy.Subscriber("/camera/depth_registered/points", PointCloud2, callback)
-        rospy.Subscriber("speechinput", String, mode)
-        rospy.spin()
+    rospy.init_node('movement', anonymous=True)
+    rospy.Subscriber("/camera/depth_registered/points", PointCloud2, callback)
+    rospy.Subscriber("speechinput", String, mode)
+    rospy.spin()
 
 def mode(data):
     global start
@@ -30,7 +30,8 @@ def mode(data):
 
     if "CALIBRATE" in data.data:
         start = True
-	    pub.publish(1)
+        pub.publish(1)
+
     else:
         start = False
 

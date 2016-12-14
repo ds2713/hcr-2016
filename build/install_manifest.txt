@@ -12,6 +12,10 @@
 /home/human/catkin_ws/install/share/fsm/cmake/fsmConfig.cmake
 /home/human/catkin_ws/install/share/fsm/cmake/fsmConfig-version.cmake
 /home/human/catkin_ws/install/share/fsm/package.xml
+/home/human/catkin_ws/install/lib/pkgconfig/imgproc.pc
+/home/human/catkin_ws/install/share/imgproc/cmake/imgprocConfig.cmake
+/home/human/catkin_ws/install/share/imgproc/cmake/imgprocConfig-version.cmake
+/home/human/catkin_ws/install/share/imgproc/package.xml
 /home/human/catkin_ws/install/lib/pkgconfig/movement.pc
 /home/human/catkin_ws/install/share/movement/cmake/movementConfig.cmake
 /home/human/catkin_ws/install/share/movement/cmake/movementConfig-version.cmake
@@ -32,6 +36,10 @@
 /home/human/catkin_ws/install/share/openni_launch//launch/includes/depth.launch
 /home/human/catkin_ws/install/share/openni_launch//launch/includes/ir.launch
 /home/human/catkin_ws/install/share/openni_launch//launch/openni_tf_prefix.launch
+/home/human/catkin_ws/install/lib/pkgconfig/sonaring.pc
+/home/human/catkin_ws/install/share/sonaring/cmake/sonaringConfig.cmake
+/home/human/catkin_ws/install/share/sonaring/cmake/sonaringConfig-version.cmake
+/home/human/catkin_ws/install/share/sonaring/package.xml
 /home/human/catkin_ws/install/lib/pkgconfig/speech.pc
 /home/human/catkin_ws/install/share/speech/cmake/speechConfig.cmake
 /home/human/catkin_ws/install/share/speech/cmake/speechConfig-version.cmake
