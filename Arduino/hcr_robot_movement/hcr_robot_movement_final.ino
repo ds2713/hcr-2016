@@ -77,9 +77,7 @@ int R2D2[]={16,A,G,E,C,D,B,F,C,A,G,E,C,D,B,F,C};
 void setup() {
   Serial.begin(9600);
   pinMode(HEADDIR,OUTPUT);
-  pinMode(HEADSTEP,OUTPUT);
-  pinMode(ENABLELIFT, OUTPUT);
-  pinMode(ENABLECLAW, OUTPUT);
+  pinMode(HEADSTEP,OUTPUT)serialMode(ENABLECLAW, OUTPUT);
   pinMode(PHASELIFT, OUTPUT);
   pinMode(PHASECLAW, OUTPUT);
   pinMode(ZEROLIFT, INPUT);
@@ -162,6 +160,7 @@ void loop() {
       }  
     break;
   }
+  Serial.print('c');
 }
 
 void movehead(float angle, bool dir){
@@ -181,8 +180,8 @@ void movehead(float angle, bool dir){
 
 void moveheadto(float angle){
   movehead(abs(angle-headpos),getdir(angle-headpos));
-  Serial.print("head position: ");
-  Serial.println(headpos);
+  //Serial.print("head position: ");
+  //Serial.println(headpos);
 }
 
 void setmstephead(int newmstep){
@@ -235,8 +234,8 @@ void movelift(float distance, bool dir){
     delay(1000*distance/LIFTSPEEDDOWN);
     liftpos-=(distance);}
     digitalWrite(ENABLELIFT, HIGH);
-    Serial.print("lift position: ");
-    Serial.println(liftpos);
+    //Serial.print("lift position: ");
+    //Serial.println(liftpos);
 }
 
 void moveliftto(float distance){
@@ -257,8 +256,8 @@ void moveclaw(float distance, bool dir){
     delay(1000*distance/CLAWSPEED);
     digitalWrite(ENABLECLAW, HIGH);
     clawpos+=(distance)*((2.0*dir)-1);
-    Serial.print("claw position: ");
-    Serial.println(clawpos);
+    //Serial.print("claw position: ");
+    //Serial.println(clawpos);
 }
 
 void moveclawto(float distance){
@@ -285,14 +284,14 @@ void movetilt(float angle, bool dir){
     digitalWrite(TILT2,LOW);
     tiltpos+=angle;
   }
-  Serial.print("tilt angle: ");
-  Serial.println(tiltpos);
+  //Serial.print("tilt angle: ");
+  //Serial.println(tiltpos);
 }
 
 void movetiltto(float angle){
   tiltspeed=getavgspeed(angle,tiltpos);
-  Serial.print("predicted tilt speed: ");
-  Serial.println(tiltspeed);
+  //Serial.print("predicted tilt speed: ");
+  //Serial.println(tiltspeed);
   if (angle>=TILTMIN and angle<=TILTMAX){
   movetilt(abs(angle-tiltpos),getdir(angle-tiltpos));
   }
@@ -456,8 +455,8 @@ void calibrate_lift(){
   }
   liftpos=0;
   movelift(20,1);
-  Serial.print("lift position: ");
-  Serial.println(liftpos);
+  //Serial.print("lift position: ");
+  //Serial.println(liftpos);
 }
 
 void calibrate_head(){
