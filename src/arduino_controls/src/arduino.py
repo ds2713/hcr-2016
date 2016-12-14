@@ -22,7 +22,7 @@ def callback_headangle(data):
     input_angle = data.data
     if input_angle != current_head:
         ser.write('{}{}{}'.format(PREFIXHEAD,',',str(input_angle)))
-        ser.read(4)
+        ser.read(1)
         current_head = input_angle
         pub.publish(current_head)
     else:
@@ -37,7 +37,7 @@ def callback_clawdist(data):
     input_distance = data.data
     if input_distance != current_claw:
         ser.write('{}{}{}'.format(PREFIXCLAW,',',str(input_distance)))
-        ser.read(4)
+        ser.read(1)
         current_claw = input_distance
         pub.publish(current_claw)
     else:
@@ -52,7 +52,7 @@ def callback_liftdist(data):
     input_distance = data.data
     if input_distance != current_lift:
         ser.write('{}{}{}'.format(PREFIXLIFT,',',str(input_distance)))
-        ser.read(4)
+        ser.read(1)
         current_lift = input_distance
         pub.publish(current_lift)
     else:
@@ -67,7 +67,7 @@ def callback_tiltangle(data):
     input_angle = data.data
     if input_angle != current_tilt:
         ser.write('{}{}{}'.format(PREFIXTILT,',',str(input_angle)))
-        ser.read(4)
+        ser.read(1)
         current_tilt = input_angle
         pub.publish(current_tilt)
     else:
@@ -75,7 +75,7 @@ def callback_tiltangle(data):
 
 if __name__ == '__main__':
     global ser
-    ser = serial.Serial('/dev/ttyACM0')
+    ser = serial.Serial('/dev/ttyACM0', timeout=10.0)
 
     global PREFIXHEAD
     PREFIXHEAD = '666'
