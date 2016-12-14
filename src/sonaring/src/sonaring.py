@@ -7,10 +7,8 @@ import math
 
 import sensor_msgs.point_cloud2 as pointcloud
 
-limit_left = math.pi * 0.75
-limit_right = math.pi * 0.25
 middle = math.pi * 0.5
-dist_limit = 0.5
+dist_limit = 0.75
 
 def main():
     rospy.init_node('sonary', anonymous=True)
@@ -24,20 +22,16 @@ def callback(data):
     global followz
 
     followx = data.x
-    followy = data.z
-    followz = data.y
+    followy = data.y
+    followz = data.z
 
 def avoid(data):
     global followx
     global followy
     global followz
 
-    afollowx = followx
-    afollowy = followy
-    afollowz = followz
-
     pub = rospy.Publisher('follow2', Point32, queue_size=10)
-    rate = rospy.Rate(10)
+    rate = rospy.Rate(2)
 
     collisions = []
 
@@ -47,7 +41,7 @@ def avoid(data):
 
         dist = math.hypot(x, y)
 
-        if dist < dist_limit:
+        if y > 0 and abs(x) <= y and dist < dist_limit:
             collisions.append([x, y, dist])
 
     if collisions:
@@ -62,26 +56,28 @@ def avoid(data):
 
         angle = math.atan2(ycol, xcol)
 
-        if angle >= limit_right and angle <= middle:
+        if angle <= middle:
             cos_angle = math.cos(angle)
             sin_angle = math.sin(angle)
 
-            new_x = cos_angle * afollowx + sin_angle * afollowy
-            new_y = cos_angle * afollowy - sin_angle * afollowx
+            new_x = cos_angle * followx - sin_angle * followy
+            new_z = cos_angle * followy + sin_angle * followx
 
-            pub.Publish(Point32(new_x, afollowz, new_y))
+            pub.publish(Point32(new_x, followy, new_z))
 
-        elif angle > middle and angle <= limit_left:
+        elif angle > middle:
             cos_angle = math.cos(angle - math.pi)
             sin_angle = math.sin(angle - math.pi)
 
-            new_x = cos_angle * afollowx + sin_angle * afollowy
-            new_y = cos_angle * afollowy - sin_angle * afollowx
+            new_x = cos_angle * followx - sin_angle * followy
+            new_z = cos_angle * followy + sin_angle * followx
 
-            pub.Publish(Point32(new_x, afollowz, new_y))
+            pub.publish(Point32(new_x, followy, new_z))
 
         else:
-            pub.Publish(Point32(0, 0, 0))
+            pub.publish(Point32(0, 0, 0))
+    else:
+        pub.publish(Point32(0, 0, 0))
 
     rate.sleep()
 

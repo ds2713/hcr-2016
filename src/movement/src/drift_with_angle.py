@@ -12,7 +12,7 @@ u_limit = 0.2 # + or - 20cm from the ur_dis
 vis_limit = 0.9 #+ or - 20cm from view
 speed = 0.2 #speed of motors
 speed_back = 0.3
-rot_limit = 0.1q
+rot_limit = 0.1
 rot_speed = 0.3
 max_dis = 2
 

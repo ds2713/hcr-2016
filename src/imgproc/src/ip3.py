@@ -13,7 +13,7 @@ import struct
 
 dis_range = 2
 noise_lim = 5000
-limit_rgb = 15
+limit_rgb = 50
 limit_blob = .25
 
 def main():
@@ -36,7 +36,7 @@ def callback(data):
     global start
 
     pub = rospy.Publisher('follow', Point32, queue_size=1)
-    rate = rospy.Rate(10)
+    rate = rospy.Rate(1)
 
     xsum = 0
     ysum = 0
@@ -84,14 +84,14 @@ def callback(data):
 
         if start:
             pub.publish(Point32(new_blob[0], new_blob[1], new_blob[2]))
-            # old_blob = new_blob
+            old_blob = new_blob
             old_rgb = new_rgb
             start = False
 
         # elif mag_diff_blob < limit_blob and mag_diff_rgb < limit_rgb:
         elif mag_diff_rgb < limit_rgb:
             pub.publish(Point32(new_blob[0], new_blob[1], new_blob[2]))
-            # old_blob = new_blob
+            old_blob = new_blob
             old_rgb = new_rgb
 
         else:
