@@ -5,6 +5,8 @@ import rospy
 from std_msgs.msg import String
 from sensor_msgs.msg import PointCloud2
 from geometry_msgs.msg import Point32
+from std_msgs.msg import Int16
+
 import math
 
 import sensor_msgs.point_cloud2 as pointcloud
@@ -24,9 +26,11 @@ def main():
 
 def mode(data):
     global start
+    pub = rospy.Publisher('arduino_routines', Int16, queue_size=1)
 
     if "CALIBRATE" in data.data:
         start = True
+	    pub.publish(1)
     else:
         start = False
 
