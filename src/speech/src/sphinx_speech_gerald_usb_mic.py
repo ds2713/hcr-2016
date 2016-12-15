@@ -11,9 +11,6 @@ index = pyaudio.PyAudio().get_device_count() - 1
 print index
 print int(index)
 
-keyword_stop = "finish"
-keyword_go = "follow"
-
 keywords = [("finish", 0.8), ("follow", 0.8), ("calibrate", 0.8)]
 
 #Device name for Kinect audio device
@@ -75,8 +72,10 @@ def speechtotext():
                 #     keyword_publisher = keyword_stop
                 #     pub.publish(keyword_publisher)
 
+                if the_output != "UNKOWN":
+                    pub.publish(the_output.upper())
+
                 rospy.loginfo(the_output.upper())
-                pub.publish(the_output.upper())
 
             except sr.WaitTimeoutError:
                 times = times + 1
