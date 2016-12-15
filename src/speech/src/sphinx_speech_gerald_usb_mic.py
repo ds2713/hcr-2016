@@ -14,7 +14,7 @@ print int(index)
 keyword_stop = "finish"
 keyword_go = "follow"
 
-keywords = [("finish", 0.8), ("follow", 0.8), ("calibrate", 0.8)]
+keywords = [("finish", 0.6), ("follow", 0.6), ("calibrate", 0.6)]
 
 #Device name for Kinect audio device
 search_word = "Kinect USB Audio"
