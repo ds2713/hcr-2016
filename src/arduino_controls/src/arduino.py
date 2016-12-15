@@ -11,7 +11,17 @@ def update():
     rospy.Subscriber("clawdist_in", Float32, callback_clawdist)
     rospy.Subscriber("liftdist_in", Float32, callback_liftdist)
     rospy.Subscriber("tiltangle_in", Float32, callback_tiltangle)
+    rospy.Subscriber("beep", Float32, callback_beep)
     rospy.spin()
+
+def callback_beep(data):
+    global PREFIXBEEP
+    global ser
+
+    pub = rospy.Publisher('headangle_out', Float32, queue_size=10)
+    beep = data.data
+    ser.write('{}{}{}'.format(PREFIXBEEP,',',str(beep)))
+
 
 def callback_headangle(data):
     global ser
@@ -85,6 +95,8 @@ if __name__ == '__main__':
     PREFIXLIFT = '444'
     global PREFIXTILT
     PREFIXTILT = '333'
+    global PREFIXBEEP
+    PREFIXBEEP = '999'
 
     global current_head
     global current_claw

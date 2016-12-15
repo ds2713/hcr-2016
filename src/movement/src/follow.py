@@ -3,15 +3,16 @@ import roslib
 import rospy
 from geometry_msgs.msg import Twist, Point32
 from std_msgs.msg import String
-#from std_msgs.msg import Float32
+from std_msgs.msg import Float32
 import signal
+import math
 
 ur_dis = 1
 u_limit = 0.2 # + or - 20cm from the ur_dis
 vis_limit = 0.9 #+ or - 20cm from view
-speed = 0.5 #speed of motors
+speed = 0.3 #speed of motors
 speed_back = 0.3
-rot_limit = 0.1
+rot_limit = 0.2
 rot_speed = 0.3
 max_dis = 2
 
@@ -50,11 +51,14 @@ def callback(data):
         if follow == True:
             print "Should be following"
             #while not rospy.is_shutdown():
-            if data.z < ur_dis + vis_limit and data.z > ur_dis - vis_limit:
+            dis = math.sqrt(data.z**2 + data.x**2)
+
+
+            if dis > 0:
                 if data.z > ur_dis + u_limit:
                     #move towards user
-                    print "Foward"
-                    vel_msg.linear.x = speed
+                    print "Forward"
+                    vel_msg.linear.x = speed * (dis/ur_dis)
                     #print ("Forward")
                 elif data.z < ur_dis - u_limit:
                     #move away from user
@@ -91,6 +95,7 @@ def callback(data):
         else:
             print("Not meant to be following!")
             vel_msg.linear.x = 0
+            vel_msg.angular.z = 0
 
         #print str(data.z)
         #print str(vel_msg.linear.x)
@@ -100,14 +105,18 @@ def callback(data):
         print "Interrupted"
 
 def follow_command(data):
+
+    beep_publisher = rospy.Publisher('beep',Float32, queue_size=10)
     print("Follow commanded")
     global follow
     if keyword_stop in data.data:
         follow = False
         print("Stopping")
+        beep_publisher.publish(2)
     elif keyword_go in data.data:
         follow = True
         print("Following")
+        beep_publisher.publish(3)
         print follow
 
 
@@ -119,6 +128,7 @@ def listener():
 
 
 if __name__ == '__main__':
+    print "Follow function running"
     global follow
     follow = False
     listener()
