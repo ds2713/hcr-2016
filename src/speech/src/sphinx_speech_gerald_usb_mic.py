@@ -11,14 +11,10 @@ index = pyaudio.PyAudio().get_device_count() - 1
 print index
 print int(index)
 
-<<<<<<< HEAD
 keyword_stop = "finish"
 keyword_go = "follow"
 
-keywords = [("finish", 0.6), ("follow", 0.6), ("calibrate", 0.6)]
-=======
-keywords = [("finish", 0.8), ("follow", 0.8), ("calibrate", 0.8)]
->>>>>>> 78180ac964c1eb65c23d7a540c25f9f8f3f1050d
+keywords = [("finish", 0.7), ("follow", 0.6), ("calibrate", 0.8), ("unknown", 0.9)]
 
 #Device name for Kinect audio device
 search_word = "Kinect USB Audio"

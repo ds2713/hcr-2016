@@ -17,7 +17,8 @@ rot = 0.1
 rot_limit = 0;
 rot_speed = 0.3
 max_dis = 2
-global angle = 0
+global angle
+angle = 0
 vel_msg = Twist()
 
 #Set the speed of the other parameters to 0
