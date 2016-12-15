@@ -53,7 +53,6 @@ def callback(data):
             #while not rospy.is_shutdown():
             dis = math.sqrt(data.z**2 + data.x**2)
 
-
             if dis > 0:
                 if data.z > ur_dis + u_limit:
                     #move towards user
@@ -107,12 +106,16 @@ def callback(data):
 def follow_command(data):
 
     beep_publisher = rospy.Publisher('beep',Float32, queue_size=10)
+
     print("Follow commanded")
+
     global follow
+
     if keyword_stop in data.data:
         follow = False
         print("Stopping")
         beep_publisher.publish(2)
+
     elif keyword_go in data.data:
         follow = True
         print("Following")
@@ -125,7 +128,6 @@ def listener():
     rospy.Subscriber("/follow", Point32, callback)
     rospy.Subscriber("/speechinput", String, follow_command)
     rospy.spin()
-
 
 if __name__ == '__main__':
     print "Follow function running"

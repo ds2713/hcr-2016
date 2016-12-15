@@ -116,8 +116,7 @@ def head_angle(data):
 def listener():
     rospy.init_node('listener', anonymous=True)
     rospy.Subscriber("/follow", Point32, callback)
-    rospy.Subscriber("headangle_in", Float32, head_angle)
-    rospy.
+    rospy.Subscriber("headangle_out", Float32, head_angle)
     rospy.spin()
 
 
