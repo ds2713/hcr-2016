@@ -77,7 +77,9 @@ int R2D2[]={16,A,G,E,C,D,B,F,C,A,G,E,C,D,B,F,C};
 void setup() {
   Serial.begin(9600);
   pinMode(HEADDIR,OUTPUT);
-  pinMode(HEADSTEP,OUTPUT)serialMode(ENABLECLAW, OUTPUT);
+  pinMode(HEADSTEP,OUTPUT);
+  pinMode(ENABLELIFT, OUTPUT);
+  pinMode(ENABLECLAW, OUTPUT);
   pinMode(PHASELIFT, OUTPUT);
   pinMode(PHASECLAW, OUTPUT);
   pinMode(ZEROLIFT, INPUT);
@@ -467,7 +469,7 @@ void calibrate_tilt(){
   while(!digitalRead(ZEROTILT)){
     movetilt(1,1);
   }
-  movetilt(23,0);
+  movetilt(20,0);
   tiltpos=0;
 }
 
