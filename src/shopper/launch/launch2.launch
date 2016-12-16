@@ -7,8 +7,8 @@
     <node pkg="speech" name="speechy" type="sphinx_speech_gerald_usb_mic.py" respawn="true"/>
     <node pkg="imgproc" name="movement" type="ip.py" respawn="true"/>
     <node pkg="movement" name="listener" type="straight_angle_follow.py" respawn="true"/>
-    <node pkg="arduino_controls" name="arduino" type="arduino.py" respawn="true"/>
-    <node pkg="arduino_controls" name="routines" type="routines.py" respawn="true"/>
+    <!-- <node pkg="arduino_controls" name="arduino" type="arduino.py" respawn="true"/>
+    <node pkg="arduino_controls" name="routines" type="routines.py" respawn="true"/> -->
     <!-- <node pkg="sonaring" name="sonary" type="sonaring.py" respawn="true"/> -->
     <include file="$(find openni_launch)/launch/openni.launch"/>
 

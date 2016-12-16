@@ -11,9 +11,9 @@ import math
 ur_dis = 1
 u_limit = 0.2 # + or - 20cm from the ur_dis
 vis_limit = 0.9 #+ or - 20cm from view
-speed = 0.3 #speed of motors
+speed = 0.5 #speed of motors
 speed_back = 0.3
-rot_limit = 0.2
+rot_limit = 0.1
 rot_speed = 0.3
 max_dis = 2
 
@@ -23,7 +23,7 @@ keyword_go = "FOLLOW"
 vel_msg = Twist()
 
 #Set the speed of the other parameters to 0
-#vel_msg.linear.x = 0
+vel_msg.linear.x = 0
 vel_msg.linear.y = 0
 vel_msg.linear.z = 0
 vel_msg.angular.x = 0
@@ -52,13 +52,14 @@ def callback(data):
         if follow == True:
             print "Should be following"
             #while not rospy.is_shutdown():
-            dis = math.sqrt(data.z**2 + data.x**2)
+            # dis  = math.sqrt(data.z**2 + data.x**2)
 
-            if dis > 0:
+            #if dis > 0:
+            if data.z < ur_dis + vis_limit and data.z > ur_dis - vis_limit:
                 if data.z > ur_dis + u_limit:
                     #move towards user
                     print "Forward"
-                    vel_msg.linear.x = speed * (dis/ur_dis)
+                    vel_msg.linear.x = speed
                     #print ("Forward")
                 elif data.z < ur_dis - u_limit:
                     #move away from user
@@ -115,12 +116,12 @@ def follow_command(data):
     if keyword_stop in data.data:
         follow = False
         print("Stopping")
-        beep_publisher.publish(2)
+        beep_publisher.publish(3)
 
     elif keyword_go in data.data:
         follow = True
         print("Following")
-        beep_publisher.publish(3)
+        beep_publisher.publish(2)
         print follow
 
 

@@ -9,10 +9,10 @@ import signal
 
 ur_dis = 1
 z_limit = 1
-u_limit = 0.2 # + or - from the ur_dis
+u_limit = 0.3 # + or - from the ur_dis
 vis_limit = 0.9 #+ or - from view
 speed = 0.2 #speed of motors
-speed_back = 0.3
+speed_back = 0.2
 rot = 0.1
 rot_limit = 0;
 rot_speed = 0.3
@@ -112,7 +112,7 @@ def callback(data):
 def head_angle(data):
     global angle
     print "angle = " + str(angle)
-    angle = radians(data)
+    angle = radians(data.data)
 
 def listener():
     rospy.init_node('listener', anonymous=True)

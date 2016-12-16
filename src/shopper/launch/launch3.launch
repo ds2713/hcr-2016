@@ -1,0 +1,14 @@
+
+<launch>
+    <group>
+        <param name="openni_tracker/camera_frame_id" value="camera_link" />
+        <node pkg="rosaria" name="RosAria" type="RosAria" args="_port:=/dev/ttyUSB1"/>
+        
+        <node pkg="openni_tracker" name="openni_tracker" type="openni_tracker" respawn="true">
+            <rosparam name="openni_tracker/camera_frame_id" value="camera_link" />
+        </node>
+
+        <include file="$(find openni_launch)/launch/openni.launch"/>
+
+    </group>
+</launch>
