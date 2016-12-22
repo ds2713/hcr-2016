@@ -21,6 +21,9 @@ This repository contains the files used for the development and testing of our r
   * `ip3.py` is the node that in addition to the depth cloud processing for the average point, also includes a colour hystersis element to ensure that subsequent points published are only done so if the average RGB values are similar. This also listens to the speech output for calibration to reset the colour profile.
 
 4. `movement` - The nodes for movement modes.
+  * There are quiet a number of files in this package. Most were different incremental versions, and included several different implementations to test out how effective control schemes were. Only the important ones are described, assume the rest are just backups and experiments.
+  * `drift.py` is the working movement node that worked with the RGB version of the computer vision node. It is able to take 3D coordinates and publish correct commands to the `cmd_vel` topic to make Gerald move.
+  * `straight_angle_follow.py` is the cut down version of the following algorithm to use during the tests to ensure that the following does not accidentally move out of control when presented with a user. 
 
 5. `shopper` - Only contains launch files.
   * `launch.launch` contains the final combination of all the nodes. The only thing commented out is the sonar, which was seen to be unreliable, and could even interfere with the speech recognition.
