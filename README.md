@@ -21,7 +21,7 @@ This repository contains the files used for the development and testing of our r
   * `ip3.py` is the node that in addition to the depth cloud processing for the average point, also includes a colour hystersis element to ensure that subsequent points published are only done so if the average RGB values are similar. This also listens to the speech output for calibration to reset the colour profile.
 
 4. `movement` - The nodes for movement modes.
-  * There are quiet a number of files in this package. Most were different incremental versions, and included several different implementations to test out how effective control schemes were. Only the important ones are described, assume the rest are just backups and experiments.
+  * There are quite a number of files in this package. Most were different incremental versions, and included several different implementations to test out the effectiveness of control schemes. Only the important ones are described, assume the rest are just backups and experiments.
   * `drift.py` is the working movement node that worked with the RGB version of the computer vision node. It is able to take 3D coordinates and publish correct commands to the `cmd_vel` topic to make Gerald move.
   * `straight_angle_follow.py` is the cut down version of the following algorithm to use during the tests to ensure that the following does not accidentally move out of control when presented with a user. 
 
@@ -34,9 +34,9 @@ This repository contains the files used for the development and testing of our r
   * `sonaring.py`, although not ultimately used, contains the processing for the sonar depth cloud. It would subscribe to the following point from the `imgproc` node in use, then rotate it if necessary to avoid an obstacle, before publishing to another topic.
 
 7. `speech` - Speech processing
-  * `speechy.py` was the original speech recognition node using Sphinx that was not as optimised as it could it. It was linked to the laptop's mic and was trying to convert all speech to text. It did not perform well.
+  * `speechy.py` was the original speech recognition node using Sphinx that was not as optimised as it could be. It was linked to the laptop's mic and was trying to convert all speech to text. It did not perform well.
   * `google_speech_gerald_usb_mic.py` was an attempt at using the Google Speech-to-Text API with a USB mic that we borrowed. While Google is good, there are limits to the free service, in the form of the maximum number of requests per day. This is very much what `google_speech.py` and `google_speech_gerald.py` do.
-  * `sphinx_speech_gerald_usb_mic.py` is the final one. Still using Sphinx, it was tailored to use the Kinect's USB microphones, which allowed a much better performance since those microphones actually face the speaker. Additionally, the Sphinx part was modified to look out for only certain words. This increased its accuracy for those words dramatically, and this is the final node used for our robot.
+  * `sphinx_speech_gerald_usb_mic.py` is the final one. Still using Sphinx, it was tailored to use the Kinect's USB microphones, which allowed a much better performance since those microphones actually face the user. Additionally, the Sphinx part was modified to look out for only certain key words. This increased its accuracy for those words dramatically, and this is the final node used for our robot.
 
 ## Things inside `src` that are not ours ##
 In other words, these were repositories that were cloned here from Github as part of our project.
